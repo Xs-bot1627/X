@@ -2,11 +2,11 @@
   "name": "SHAHADAT CHAT BOT",
   "version": "10.1.1",
   "description": "Made By SHAHADAT SAHU",
-  "main": "Main.js",
+  "main": "Sahu.js",
   "engines": {
-  "node": "20.x",
-  "npm": ">=10.0.0 <13.0.0"
-},
+    "node": "20.x",
+    "npm": ">=10.0.0 <13.0.0"
+  },
   "scripts": {
     "start": "node Sahu.js",
     "login": "node login",
@@ -19,20 +19,17 @@
   "keywords": [
     "bot",
     "facebook",
-    "shahadatproject",
     "messenger",
-    "javasvript",
-    "shadat",
-    "ullash",
-    "cybersahu ",
-    "shahadat chat bot"
+    "shahadat",
+    "chatbot",
+    "nodejs"
   ],
   "author": "SHAHADAT SAHU",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shahadat-sahu/SHAHADAT-CHAT-BOT/issues"
   },
-  "homepage": "https://github.com/shahadat-sahu/SHAHADAT-CHAT-BOT/issues",
+  "homepage": "https://github.com/shahadat-sahu/SHAHADAT-CHAT-BOT",
   "dependencies": {
     "@distube/ytdl-core": "^4.13.2",
     "@miraipr0ject/assets": "^1.0.9",
