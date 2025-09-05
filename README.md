@@ -1,62 +1,3 @@
----------
-
-### —͟͟͞͞𝐒𝐇𝐀𝐇𝐀𝐃𝐀𝐓 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓  𝐅𝐎𝐑𝐊  🌺
-
-❖ **`A Messenger Multi Device Bot To Take Your Messenger To Another Level!`** 
-
-
-
-Assalamualaikum Everyone!  
-**Welcome to My SHAHADAT CHAT BOT Fork!**
-
-![Box-shaped Image](https://i.imgur.com/u7VnPzH.png)
-
-<p align="center" style="animation: glow 2s infinite alternate; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <span style="font-size: 24px; font-weight: bold;">SHAHADAT CHAT BOT</span><br>
-  <span> Develop By SHAHADAT SAHU</span>
-</p>
-
-
-_______
-### <br>   ❖ DEPLOY_WORKFLOWS ❖
-```
-name: Node.js CI
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    # Step to check out the repository code
-    - uses: actions/checkout@v2
-
-    # Step to set up the specified Node.js version
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    # Step to install dependencies
-    - name: Install dependencies
-      run: npm install
-
-    # Step to run the bot with the correct port
-    - name: Start the bot
-      env:
-        PORT: 8080
-      run: npm start
-```
 
 ___
 
@@ -91,8 +32,8 @@ ___
       <h3 style="margin: 0 0 8px;">Replit</h3>
       <p style="margin: 0;">
         Replit is an online coding environment that lets you write, run, and test code directly from your browser without any setup.  
-        Simply sign up for a free account, create a new project (called a “Repl”), and start coding in languages like JavaScript, Python, C++, and many more.  
-        It’s perfect for quick prototyping, learning programming, or collaborating with others in real-time.  
+        Simply sign up for a free account, create a new project (called a "Repl"), and start coding in languages like JavaScript, Python, C++, and many more.  
+        It's perfect for quick prototyping, learning programming, or collaborating with others in real-time.  
         You can also host simple web apps and share your projects with a public URL instantly.
       </p>
     </div>
@@ -126,49 +67,40 @@ ___
 
 </div>
 
-
-
-
 ---
 
-
-
-
 ## 👨‍💻 **ABOUT THE DEVELOPER**  
-  
-**Name:** **`SHAHADAT ISLAM`**  
-**Nice Name:** **`SA HU`**  
-**Profession:** **`STUDENT & CHATBOT DEVELOPER`**  
-**Location:** **`KHAGRACHARI, BANGLADESH`**  
+
+**Name:** **`JOY`**  
+**Gender:** **`Male`**  
+**Relationship:** **`Single`**  
+**Age:** **`17`**  
+**Religion:** **`Islam`**  
+**Education:** **`Inter 2nd Year`**  
+**Location:** **`Jhenaidah, Bangladesh`**  
 
 ### 📞 **CONTACT INFORMATION**  
-- **WhatsApp:** **[01882 333052](https://wa.me/+8801882333052)**  
-- **Facebook:** **[Facebook ID](https://facebook.com/100001039692046)**  
-- **Messenger:** **[Message](https://m.me/100001039692046)**  
+- **WhatsApp:** **[01959135627](https://wa.me/+8801959135627)**  
+- **Facebook:** **[Facebook Profile](https://facebook.com/king.is.back.take.love.all)**  
+- **Messenger:** **[Message Me](https://m.me/king.is.back.take.love.all)**  
+- **TikTok:** **Protibondhi app rakhi na**
 
 ### 🚀 **DEVELOPMENT APPROACH**  
 - 💻 **Copy-paste techniques with customizations**  
 - 🤝 **Collaborative development with friends**  
 - 🤖 **AI-powered using ChatGPT and other advanced tools**  
 
-
-
-
 ---
-
-
-
-
 
 ## ❖ SUPPORT  
 If you need any help, you can contact the admin.
 Please do not disturb the admin unless you have a special need. Thank you! 
 
 <p align="center">
-  <a href="https://wa.me/+8801882333052?text=Assalamualaikum%20Admin%20SHAHADAT%20SAHU%20Need%20Help%20Please%20Brother%20🫶">
+  <a href="https://wa.me/+8801959135627?text=Assalamualaikum%20Admin%20JOY%20Need%20Help%20Please%20Brother%20🫶">
     <img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white">
   </a>
-  <a href="https://m.me/100001039692046">
+  <a href="https://m.me/king.is.back.take.love.all">
     <img alt="Messenger" src="https://img.shields.io/badge/Messenger-00B2FF?style=for-the-badge&logo=messenger&logoColor=white">
   </a>
 </p>
@@ -184,7 +116,7 @@ Please do not disturb the admin unless you have a special need. Thank you!
 
 ---
 
-💖 **Thank You For Choosing 𝗦𝗵𝗮𝗵𝗮𝗱𝗮𝘁 𝗖𝗵𝗮𝘁 𝗕𝗼𝘁!**  
+💖 **Thank You For Choosing ☬𝗝𝗼𝘆𝗖𝗵𝗮𝘁𝗕𝗼𝘁☬࿐!**  
 🗓️ *Release Date:* `11/08/2025 at 02:00`  
 ⭐ **Please don't forget to give a star after forking! It really helps!**
 
@@ -195,10 +127,9 @@ Please do not disturb the admin unless you have a special need. Thank you!
 </p>
 
 <p align="center">
-  <a href="https://github.com/shahadat-sahu"><img src="https://img.icons8.com/fluency/48/000000/github.png" alt="GitHub"></a>
-  <a href="https://wa.me/+8801882333052"><img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp"></a>
-  <a href="https://facebook.com/100001039692046"><img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"></a>
-  <a href="https://t.me/+8EtzLXVG-REwYTM1"><img src="https://img.icons8.com/color/48/000000/telegram-app.png" alt="Telegram"></a>
+  <a href="https://github.com/joy-bot"><img src="https://img.icons8.com/fluency/48/000000/github.png" alt="GitHub"></a>
+  <a href="https://wa.me/+8801959135627"><img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp"></a>
+  <a href="https://facebook.com/king.is.back.take.love.all"><img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"></a>
   <a href="https://youtube.com/@cyberbotcommunity"><img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube"></a>
 </p>
 
