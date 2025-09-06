@@ -21,7 +21,7 @@ module.exports.onLoad = async () => {
 
   const dirMaterial = resolve(__dirname, 'cache', 'canvas');
   if (!existsSync(dirMaterial)) mkdirSync(dirMaterial, { recursive: true });
-  // Make sure chidori.jpg is already placed here manually
+  // Place chidori.jpg in this folder manually
 };
 
 async function makeImage({ senderID, mentionedID }) {
@@ -38,15 +38,19 @@ async function makeImage({ senderID, mentionedID }) {
   let avatarSenderPath = __root + `/avt_${senderID}.png`;
   let avatarMentionedPath = __root + `/avt_${mentionedID}.png`;
 
-  // Download avatars in binary
+  // 🔑 Facebook default app token
+  const fbToken = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
+
+  // Download sender avatar
   let getAvatarSender = (await axios.get(
-    `https://graph.facebook.com/${senderID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+    `https://graph.facebook.com/${senderID}/picture?width=512&height=512&access_token=${fbToken}`,
     { responseType: "arraybuffer" }
   )).data;
   fs.writeFileSync(avatarSenderPath, Buffer.from(getAvatarSender, "binary"));
 
+  // Download mentioned avatar
   let getAvatarMentioned = (await axios.get(
-    `https://graph.facebook.com/${mentionedID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+    `https://graph.facebook.com/${mentionedID}/picture?width=512&height=512&access_token=${fbToken}`,
     { responseType: "arraybuffer" }
   )).data;
   fs.writeFileSync(avatarMentionedPath, Buffer.from(getAvatarMentioned, "binary"));
@@ -55,16 +59,16 @@ async function makeImage({ senderID, mentionedID }) {
   let circleAvatarSender = await jimp.read(await circle(avatarSenderPath));
   let circleAvatarMentioned = await jimp.read(await circle(avatarMentionedPath));
 
-  // Composite avatars onto Chidori template
+  // Composite avatars on template
   baseImage.resize(1024, 712)
-    .composite(circleAvatarMentioned.resize(200, 200), 389, 407) // Left: tagged
-    .composite(circleAvatarSender.resize(200, 200), 527, 141);    // Right: sender
+    .composite(circleAvatarMentioned.resize(120, 120), 390, 230) // Rin’s face
+    .composite(circleAvatarSender.resize(120, 120), 570, 160);   // Kakashi’s face
 
   // Save final image
   let raw = await baseImage.getBufferAsync("image/png");
   fs.writeFileSync(pathImg, raw);
 
-  // Remove temp avatar files
+  // Cleanup
   fs.unlinkSync(avatarSenderPath);
   fs.unlinkSync(avatarMentionedPath);
 
@@ -83,7 +87,7 @@ module.exports.run = async function ({ event, api }) {
   const { threadID, messageID, senderID, mentions } = event;
 
   if (!Object.keys(mentions).length) {
-    return api.sendMessage("Vui lòng tag 1 người để ship!", threadID, messageID);
+    return api.sendMessage("⚡ Vui lòng tag 1 người để ship!", threadID, messageID);
   }
 
   let mentionedID = Object.keys(mentions)[0];
@@ -91,7 +95,7 @@ module.exports.run = async function ({ event, api }) {
 
   return makeImage({ senderID, mentionedID }).then(path => {
     return api.sendMessage({
-      body: "Ship 💕",
+      body: `⚡ ${tagName} bị bạn dính Chidori 😳`,
       mentions: [{ tag: tagName, id: mentionedID }],
       attachment: fs.createReadStream(path)
     }, threadID, () => fs.unlinkSync(path), messageID);
