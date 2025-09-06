@@ -18,16 +18,10 @@ module.exports.config = {
 module.exports.onLoad = async () => {
   const { resolve } = global.nodemodule["path"];
   const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-  const { downloadFile } = global.utils;
 
   const dirMaterial = resolve(__dirname, 'cache', 'canvas');
-  const pathChidori = resolve(dirMaterial, 'chidori.png');
-
   if (!existsSync(dirMaterial)) mkdirSync(dirMaterial, { recursive: true });
-
-  if (!existsSync(pathChidori)) {
-    await downloadFile("https://i.imgur.com/Zw693ft.jpeg", pathChidori);
-  }
+  // Make sure chidori.jpg is already placed here manually
 };
 
 async function makeImage({ senderID, mentionedID }) {
@@ -37,14 +31,14 @@ async function makeImage({ senderID, mentionedID }) {
   const jimp = global.nodemodule["jimp"];
 
   const __root = path.resolve(__dirname, "cache", "canvas");
-  const baseImage = await jimp.read(__root + "/chidori.png");
+  const baseImage = await jimp.read(path.resolve(__root, "chidori.jpg"));
 
-  let pathImg = __root + `/couple_${senderID}_${mentionedID}.png`;
+  let pathImg = __root + `/chidori_${senderID}_${mentionedID}.png`;
 
   let avatarSenderPath = __root + `/avt_${senderID}.png`;
   let avatarMentionedPath = __root + `/avt_${mentionedID}.png`;
 
-  // Download avatars
+  // Download avatars in binary
   let getAvatarSender = (await axios.get(
     `https://graph.facebook.com/${senderID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
     { responseType: "arraybuffer" }
@@ -57,20 +51,20 @@ async function makeImage({ senderID, mentionedID }) {
   )).data;
   fs.writeFileSync(avatarMentionedPath, Buffer.from(getAvatarMentioned, "binary"));
 
-  // Circular avatars
+  // Make avatars circular
   let circleAvatarSender = await jimp.read(await circle(avatarSenderPath));
   let circleAvatarMentioned = await jimp.read(await circle(avatarMentionedPath));
 
   // Composite avatars onto Chidori template
   baseImage.resize(1024, 712)
-    .composite(circleAvatarMentioned.resize(200, 200), 389, 407) // Left: mentioned user (Rin)
-    .composite(circleAvatarSender.resize(200, 200), 527, 141);    // Right: sender (Kakashi)
+    .composite(circleAvatarMentioned.resize(200, 200), 389, 407) // Left: tagged
+    .composite(circleAvatarSender.resize(200, 200), 527, 141);    // Right: sender
 
   // Save final image
   let raw = await baseImage.getBufferAsync("image/png");
   fs.writeFileSync(pathImg, raw);
 
-  // Remove temporary avatar files
+  // Remove temp avatar files
   fs.unlinkSync(avatarSenderPath);
   fs.unlinkSync(avatarMentionedPath);
 
@@ -97,7 +91,7 @@ module.exports.run = async function ({ event, api }) {
 
   return makeImage({ senderID, mentionedID }).then(path => {
     return api.sendMessage({
-      body: "",
+      body: "Ship 💕",
       mentions: [{ tag: tagName, id: mentionedID }],
       attachment: fs.createReadStream(path)
     }, threadID, () => fs.unlinkSync(path), messageID);
