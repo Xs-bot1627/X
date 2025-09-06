@@ -61,8 +61,8 @@ async function makeImage({ senderID, mentionedID }) {
 
   // Composite avatars on template
   baseImage.resize(1024, 712)
-    .composite(circleAvatarMentioned.resize(120, 120), 390, 230) // Rin’s face
-    .composite(circleAvatarSender.resize(120, 120), 570, 160);   // Kakashi’s face
+    .composite(circleAvatarMentioned.resize(120, 120), 510, 170) // Rin’s face
+    .composite(circleAvatarSender.resize(120, 120), 650, 190);   // Kakashi’s face
 
   // Save final image
   let raw = await baseImage.getBufferAsync("image/png");
