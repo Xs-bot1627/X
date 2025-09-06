@@ -95,7 +95,7 @@ module.exports.run = async function ({ event, api }) {
 
   return makeImage({ senderID, mentionedID }).then(path => {
     return api.sendMessage({
-      body: `⚡ ${tagName} bị bạn dính Chidori 😳`,
+      body: `⚡ ${tagName} take Chidori 😳`,
       mentions: [{ tag: tagName, id: mentionedID }],
       attachment: fs.createReadStream(path)
     }, threadID, () => fs.unlinkSync(path), messageID);
